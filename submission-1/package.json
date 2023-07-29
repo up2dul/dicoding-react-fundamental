@@ -1,12 +1,17 @@
 {
-  "name": "personal-notes-1",
+  "name": "noteezy",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Abdul",
+    "email": "up2dul@gmail.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint './**/*.{js,cjs,mjs,jsx}' --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint --fix './**/*.{js,cjs,mjs,jsx}'",
     "preview": "vite preview"
   },
   "dependencies": {
