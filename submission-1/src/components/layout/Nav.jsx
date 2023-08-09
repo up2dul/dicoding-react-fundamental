@@ -1,12 +1,15 @@
-import { Box, Flex, Link } from '@chakra-ui/react';
+import { Box, Flex, Link as ChakraLink } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
   return (
-    <Box as='nav' pos='fixed'>
-      <Flex gap={20}>
-        <Link href='/'>Home</Link>
-        <Link href='/archive'>Archive</Link>
-      </Flex>
-    </Box>
+    <Flex justifyContent="center">
+      <Box as="nav" pos="fixed" bottom={20} px={8} py={4} borderRadius={10} bg="gray.800" color="white" display="inline-block">
+        <Flex justifyContent="center" gap={8}>
+          <ChakraLink as={Link} to="/">Home</ChakraLink>
+          <ChakraLink as={Link} to="/archive">Archive</ChakraLink>
+        </Flex>
+      </Box>
+    </Flex>
   );
 }
