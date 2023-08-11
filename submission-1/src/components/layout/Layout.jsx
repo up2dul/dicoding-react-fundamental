@@ -1,4 +1,6 @@
 import { Flex } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
+
 import Nav from './Nav';
 
 export default function Layout({ children }) {
@@ -20,3 +22,7 @@ export default function Layout({ children }) {
     </>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.element,
+};
