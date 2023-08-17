@@ -8,7 +8,14 @@ const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({
+    include: "**/*.jsx",
+  })],
+  server: {
+    watch: {
+      usePolling: true,
+    },
+  },
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, './src') }]
   },
