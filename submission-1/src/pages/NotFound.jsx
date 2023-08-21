@@ -1,3 +1,11 @@
+import { Heading } from '@chakra-ui/react';
+
+import Layout from '@/components/layout/Layout';
+
 export default function NotFound() {
-  return <h1>404 - page not found.</h1>;
+  return (
+    <Layout>
+      <Heading as='h1'>404 - Page not found</Heading>
+    </Layout>
+  )
 }
