@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import Home from '@/pages/Home';
 import Archive from '@/pages/Archive';
+import Detail from '@/pages/Detail';
 import NotFound from '@/pages/NotFound';
 
 export default function App() {
@@ -11,6 +12,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/archive' element={<Archive />} />
+        <Route path='/detail/:noteId' element={<Detail />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>
