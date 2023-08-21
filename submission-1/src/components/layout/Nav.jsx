@@ -7,7 +7,7 @@ export default function Nav() {
       <Box
         as='nav'
         pos='fixed'
-        bottom={20}
+        bottom={10}
         borderRadius={10}
         bg='gray.800'
         color='white'

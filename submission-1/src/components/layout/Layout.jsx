@@ -9,9 +9,9 @@ export default function Layout({ children }) {
       <Nav />
 
       <Flex
-        as='main'
-        mt='64px'
+        as='section'
         mx='auto'
+        mb='60px'
         w='85%'
         alignItems='center'
         flexDirection='column'
@@ -24,5 +24,5 @@ export default function Layout({ children }) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 };
