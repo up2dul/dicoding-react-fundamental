@@ -14,10 +14,10 @@ const styles = {
     'html, body': {
       bgColor: colors.dark,
     },
-    'h1, h2, h3, h4, h5, h6': {
+    'h1, h2, h3, h4, h5, h6, label': {
       color: colors.headline,
     },
-    'p, li, a': {
+    'p, li, a, input, textarea': {
       color: colors.paragraph,
     },
   },

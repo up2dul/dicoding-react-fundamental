@@ -11,8 +11,8 @@ export default function Layout({ children }) {
       <Flex
         as='section'
         mx='auto'
-        mb='60px'
-        w='85%'
+        mb={['40px', '60px']}
+        w={['90%', '85%']}
         alignItems='center'
         flexDirection='column'
         gap='24px'
