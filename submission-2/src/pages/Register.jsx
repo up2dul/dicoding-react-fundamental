@@ -5,8 +5,11 @@ import {
   Input,
   FormControl,
   FormLabel,
+  Link as ChakraLink,
   Stack,
+  Text,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 import Layout from '@/components/layout/Layout';
 import { initialRegisterState, registerReducer } from '@/reducers/register';
@@ -83,6 +86,14 @@ export default function Register() {
           </Button>
         </Stack>
       </form>
+
+      <Text>
+        Already have an account?{' '}
+        <ChakraLink as={Link} to='/login' color='teal.500'>
+          login here
+        </ChakraLink>
+        .
+      </Text>
     </Layout>
   );
 }
