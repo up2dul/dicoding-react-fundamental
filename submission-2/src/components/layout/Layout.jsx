@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 import Nav from './Nav';
 
-export default function Layout({ children }) {
+export default function Layout({ isWithNav = true, children }) {
   return (
     <>
-      <Nav />
+      {isWithNav ? <Nav /> : null}
 
       <Flex
         as='section'
         mx='auto'
-        mb={['40px', '60px']}
+        mt={isWithNav ? '20px' : '40px'}
+        mb={isWithNav ? '120px' : '40px'}
         w={['90%', '85%']}
         alignItems='center'
         flexDirection='column'
@@ -24,5 +25,6 @@ export default function Layout({ children }) {
 }
 
 Layout.propTypes = {
+  isWithNav: PropTypes.bool,
   children: PropTypes.any,
 };
