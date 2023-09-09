@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import {
   Button,
   Heading,
@@ -12,15 +12,15 @@ import { useNavigate } from 'react-router-dom';
 
 import Layout from '@/components/layout/Layout';
 import { addNote } from '@/lib/local-data';
+import { initialNoteState, noteReducer } from '@/reducers/note';
 
 export default function Add() {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [form, dispatch] = useReducer(noteReducer, initialNoteState);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNote({ title, body });
+    addNote(form);
     navigate('/');
   };
 
@@ -35,8 +35,10 @@ export default function Add() {
             <Input
               type='text'
               autoComplete='off'
-              value={title}
-              onChange={({ target }) => setTitle(target.value)}
+              value={form.title}
+              onChange={({ target }) =>
+                dispatch({ type: 'SET_TITLE', payload: target.value })
+              }
               required
             />
           </FormControl>
@@ -44,8 +46,10 @@ export default function Add() {
           <FormControl>
             <FormLabel>Note body</FormLabel>
             <Textarea
-              value={body}
-              onChange={({ target }) => setBody(target.value)}
+              value={form.body}
+              onChange={({ target }) =>
+                dispatch({ type: 'SET_BODY', payload: target.value })
+              }
               required
             />
           </FormControl>
