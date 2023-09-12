@@ -9,17 +9,21 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Layout from '@/components/layout/Layout';
 import { initialRegisterState, registerReducer } from '@/reducers/register';
+import { register } from '@/lib/api';
 
 export default function Register() {
+  const navigate = useNavigate();
   const [form, dispatch] = useReducer(registerReducer, initialRegisterState);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitted', form);
+    const { error } = await register(form);
+
+    if (!error) navigate('/login');
   };
 
   return (
