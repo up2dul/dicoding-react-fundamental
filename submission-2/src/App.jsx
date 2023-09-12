@@ -1,6 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Add, Archive, Detail, Home, Login, NotFound, Register } from '@/pages';
+import {
+  Add,
+  Archive,
+  Detail,
+  Home,
+  Login,
+  NotFound,
+  Register,
+  Settings,
+} from '@/pages';
 
 export default function App() {
   return (
@@ -11,6 +20,7 @@ export default function App() {
       <Route path='/archive' element={<Archive />} />
       <Route path='/detail/:noteId' element={<Detail />} />
       <Route path='/add' element={<Add />} />
+      <Route path='/settings' element={<Settings />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   );
