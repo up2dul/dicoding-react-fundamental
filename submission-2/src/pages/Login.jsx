@@ -10,16 +10,20 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Layout from '@/components/layout/Layout';
 import { initialLoginState, loginReducer } from '@/reducers/login';
+import { login } from '@/lib/api';
 
-export default function Login() {
+export default function Login({ onLoginSuccess }) {
   const [form, dispatch] = useReducer(loginReducer, initialLoginState);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitted', form);
+    const { error, data } = await login(form);
+
+    if (!error) onLoginSuccess(data);
   };
 
   return (
@@ -69,3 +73,7 @@ export default function Login() {
     </Layout>
   );
 }
+
+Login.propTypes = {
+  onLoginSuccess: PropTypes.func.isRequired,
+};
