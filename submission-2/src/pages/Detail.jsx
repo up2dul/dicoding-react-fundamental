@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 
 import ButtonDelete from '@/components/common/ButtonDelete';
@@ -11,13 +11,23 @@ import { formatDate } from '@/lib/utils';
 export default function Detail() {
   const { noteId } = useParams();
   const [{ title, createdAt, archived, body }, setNoteDetail] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const { data } = await getNote(noteId);
       setNoteDetail(data);
+      setIsLoading(false);
     })();
   }, []);
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <Spinner color='teal.400' size='xl' />
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
