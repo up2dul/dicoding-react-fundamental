@@ -26,6 +26,10 @@ const generateTheme = (colors) => {
         'p, li, a, input, textarea, select': {
           color: colors.paragraph,
         },
+        'nav': {
+          bgColor: colors.bg,
+          color: colors.headline,
+        }
       },
     },
     fonts: {

@@ -11,8 +11,7 @@ export default function Nav() {
         pos='fixed'
         bottom={[0, 10]}
         borderRadius={[0, 10]}
-        bg='gray.800'
-        color='white'
+        border='2px'
         display='inline-block'
         w={{ base: '100%', sm: '85%', md: '60%', xl: '40%' }}
       >
