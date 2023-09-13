@@ -11,7 +11,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import Layout from '@/components/layout/Layout';
-import { addNote } from '@/lib/local-data';
+import { addNote } from '@/lib/api';
 import { initialNoteState, noteReducer } from '@/reducers/note';
 
 export default function Add() {

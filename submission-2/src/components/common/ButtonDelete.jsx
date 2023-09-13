@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { deleteNote } from '@/lib/local-data';
+import { deleteNote } from '@/lib/api';
 
 export default function ButtonDelete() {
   const navigate = useNavigate();

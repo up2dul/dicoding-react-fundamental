@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Heading, ListItem, UnorderedList } from '@chakra-ui/react';
 
 import Card from '@/components/common/Card';
 import InputSearch from '@/components/common/InputSearch';
 import Layout from '@/components/layout/Layout';
-import { getActiveNotes } from '@/lib/local-data';
+import { getActiveNotes } from '@/lib/api';
 
 export default function Home() {
-  const initialNotes = getActiveNotes();
-  const [notes, setNotes] = useState(initialNotes);
+  const [initialNotes, setInitialNotes] = useState(null);
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await getActiveNotes();
+      setInitialNotes(data);
+      setNotes(data);
+    })();
+  }, []);
 
   return (
     <Layout>
@@ -20,7 +28,7 @@ export default function Home() {
       />
 
       {notes.length > 0 ? (
-        <UnorderedList spacing={5} styleType='none'>
+        <UnorderedList w={['90%', '70%', '50%']} spacing={5} styleType='none'>
           {notes.map((note) => (
             <ListItem key={note.id}>
               <Card {...note} />
