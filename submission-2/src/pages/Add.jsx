@@ -13,15 +13,18 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { addNote } from '@/lib/api';
 import { initialNoteState, noteReducer } from '@/reducers/note';
+import { useSuccessToast } from '@/hooks/use-successtoast';
 
 export default function Add() {
   const [form, dispatch] = useReducer(noteReducer, initialNoteState);
   const navigate = useNavigate();
+  const toast = useSuccessToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addNote(form);
     navigate('/');
+    toast('Successfully added new note');
   };
 
   return (

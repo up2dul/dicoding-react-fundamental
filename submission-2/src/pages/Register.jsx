@@ -14,16 +14,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { initialRegisterState, registerReducer } from '@/reducers/register';
 import { register } from '@/lib/api';
+import { useSuccessToast } from '@/hooks/use-successtoast';
 
 export default function Register() {
   const navigate = useNavigate();
   const [form, dispatch] = useReducer(registerReducer, initialRegisterState);
+  const toast = useSuccessToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { error } = await register(form);
 
-    if (!error) navigate('/login');
+    if (!error) {
+      navigate('/login');
+      toast('Successfully registered', 'Now you can login to your account');
+    }
   };
 
   return (
