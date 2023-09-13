@@ -23,7 +23,7 @@ export default function Settings({ onLogout }) {
 
         <FormControl>
           <FormLabel>Account</FormLabel>
-          <Button colorScheme='red'>Logout from account</Button>
+          <Button colorScheme='red' onClick={onLogout}>Logout from account</Button>
         </FormControl>
       </Stack>
     </Layout>

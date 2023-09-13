@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import {
@@ -10,8 +11,7 @@ import {
   Register,
   Settings,
 } from '@/pages';
-import { useEffect, useState } from 'react';
-import { getUserLogged, putAccessToken } from './lib/api';
+import { getUserLogged, putAccessToken } from '@/lib/api';
 
 export default function App() {
   const [authedUser, setAuthedUser] = useState(null);
