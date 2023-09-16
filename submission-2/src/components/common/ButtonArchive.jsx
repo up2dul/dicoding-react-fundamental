@@ -4,22 +4,22 @@ import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { archiveNote, unarchiveNote } from '@/lib/api';
-import { useSuccessToast } from '@/hooks/use-successtoast';
+import { useCustomToast } from '@/hooks/use-customtoast';
 
 export default function ButtonArchive({ isArchived }) {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const toast = useSuccessToast();
+  const { successToast } = useCustomToast();
 
   const handleArchive = () => {
     if (isArchived) {
       unarchiveNote(noteId);
       navigate('/');
-      toast('Successfully unarchived note');
+      successToast('Successfully unarchived note');
     } else {
       archiveNote(noteId);
       navigate('/archive');
-      toast('Successfully archived note');
+      successToast('Successfully archived note');
     }
   };
 

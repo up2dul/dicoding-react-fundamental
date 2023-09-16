@@ -2,17 +2,17 @@ import { Button } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { deleteNote } from '@/lib/api';
-import { useSuccessToast } from '@/hooks/use-successtoast';
+import { useCustomToast } from '@/hooks/use-customtoast';
 
 export default function ButtonDelete() {
   const navigate = useNavigate();
   const { noteId } = useParams();
-  const toast = useSuccessToast();
+  const { successToast } = useCustomToast();
 
   const handleDelete = () => {
     deleteNote(noteId);
     navigate('/');
-    toast('Successfully deleted note');
+    successToast('Successfully deleted note');
   };
 
   return (

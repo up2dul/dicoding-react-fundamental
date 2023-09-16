@@ -12,12 +12,12 @@ import {
   Settings,
 } from '@/pages';
 import { getUserLogged, putAccessToken } from '@/lib/api';
-import { useSuccessToast } from '@/hooks/use-successtoast';
+import { useCustomToast } from '@/hooks/use-customtoast';
 
 export default function App() {
   const [authedUser, setAuthedUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
-  const toast = useSuccessToast();
+  const { successToast } = useCustomToast();
 
   useEffect(() => {
     (async () => {
@@ -32,13 +32,13 @@ export default function App() {
     putAccessToken(accessToken);
     const { data } = await getUserLogged();
     setAuthedUser(data);
-    toast('Successfully logged in', `Welcome, ${data.name}!`);
+    successToast('Successfully logged in', `Welcome, ${data.name}!`);
   };
 
   const handleLogout = () => {
     setAuthedUser(null);
     putAccessToken('');
-    toast('Successfully logged out');
+    successToast('Successfully logged out');
   };
 
   if (initializing) return null;
