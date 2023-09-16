@@ -31,13 +31,20 @@ async function login({ email, password }) {
 
   if (responseJson.status !== 'success') {
     alert(responseJson.message);
-    return { error: true, data: null };
+    return { error: true, data: null, message: responseJson.message };
   }
 
   return { error: false, data: responseJson.data };
 }
 
 async function register({ name, email, password, confirmPassword }) {
+  if (password !== confirmPassword) {
+    return {
+      error: true,
+      message: '"Password" and "Confirm Password" must be the same',
+    };
+  }
+
   const response = await fetch(`${BASE_URL}/register`, {
     method: 'POST',
     headers: {
@@ -48,14 +55,8 @@ async function register({ name, email, password, confirmPassword }) {
 
   const responseJson = await response.json();
 
-  if (password !== confirmPassword) {
-    alert('Password does not match');
-    return { error: true };
-  }
-
   if (responseJson.status !== 'success') {
-    alert(responseJson.message);
-    return { error: true };
+    return { error: true, message: responseJson.message };
   }
 
   return { error: false };
